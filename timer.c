@@ -10,7 +10,7 @@ static volatile unsigned char czas; //czas w minutach
 static void delay (void)
 {
 	unsigned int i;
-	for (i = 0; i < 0x7000; i++);
+	for (i = 0; i < 0x8000; i++);
 }
 
 void main (void)
@@ -30,6 +30,8 @@ void main (void)
 	for (;;) {
 		if (!PRZYCISK) {
 			if (czas < MAX_CZAS) czas++;
+			LED = 1; //zgas diode
+			delay();
 			for (c = 0; c < czas; c++) {
 				LED = 1; //zgas diode
 				delay();
